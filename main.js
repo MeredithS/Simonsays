@@ -31,7 +31,7 @@ $(document).ready(function(){
 			randomColors.push('green');
 		}
 		randomColors.forEach(animateCompTile); //this is making it so when the computer gets the tiles it chooses and saves into an array will animate
-		setTimeout(function(){$compTurn.css('visibility','hidden')},randomColors.length*1000);	// this modeled after code I found on snipplr.com
+		setTimeout(function(){$compTurn.css('visibility','hidden')},randomColors.length*1000);	// this modeled after code I found on http://snipplr.com/view/19392/
 		setTimeout(function(){$playTurn.css('visibility','visible')},randomColors.length*1000);
 		console.log(playerCount);
 		console.log(randomColors);
