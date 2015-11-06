@@ -12,15 +12,16 @@ $(document).ready(function(){
 	var $playLost = $('#playerLost');
 	var randomColors=[];
 	var playerMoves=[];
-	var roundCount=0;
+	var roundCount=1;
 	var playerCount=0;
 
 
-	var getRandomColor=function(){
+	var getRandomColor=function(){		// this function gets one of 4 colors randomly and pushes them into randomColors array.
+		$round.text("Round: " + roundCount);
+		$playLost.css('visibility','hidden');
 		$compTurn.css('visibility','visible');
 		var rando=Math.floor(Math.random() * (4 - 1 + 1)) + 1; // from mdn for math.random() definition
-		// console.log(rando);
-		if(rando===1){
+		if(rando===1){																
 			randomColors.push('red');
 			}else if(rando===2){
 			randomColors.push('blue');
@@ -29,7 +30,9 @@ $(document).ready(function(){
 			}else if(rando===4){
 			randomColors.push('green');
 		}
-		randomColors.forEach(animateCompTile);
+		randomColors.forEach(animateCompTile); //this is making it so when the computer gets the tiles it chooses and saves into an array will animate
+		setTimeout(function(){$compTurn.css('visibility','hidden')},randomColors.length*1000);	// this modeled after code I found on snipplr.com
+		setTimeout(function(){$playTurn.css('visibility','visible')},randomColors.length*1000);
 		console.log(playerCount);
 		console.log(randomColors);
 	};
@@ -37,14 +40,14 @@ $(document).ready(function(){
 	$playButton.on('click',getRandomColor);
 
 
-
-	var animateCompTile = function(i,name){					//working on getting the items in randomcolors array to pulse!
-		console.log(randomColors);
-		$('#name').addClass('pulse');
-		console.log($('#name'));
-		setTimeout(function(){$('#name').removeClass('pulse')}, 500);
-		console.log($('#name'));
-	}
+	var animateCompTile = function(name,i){	// this modeled after code I found on snipplr.com
+		setTimeout(function(){
+			$('#'+name).addClass('pulse')
+				setTimeout(function(){
+				$('#'+name).removeClass('pulse')
+				},500)
+			},i*800)
+	};
 
 	var playedRed=function(){
 		playerMoves.push('red');
@@ -80,24 +83,28 @@ $(document).ready(function(){
 
 var compareArrays = function(){
 	if(event.which===13){
+		$playTurn.css('visibility','hidden');
 		roundCount+=1;
 		playerCount+=1;
 		console.log(playerCount);
-		$round.text("Round: " + roundCount);
 		for(var i=0; i<randomColors.length; i++){
 			if(randomColors[i]!==playerMoves[i]){
 				randomColors=[];
 				playerMoves=[];
 				roundCount=0;
+				$round.text("Round: " + roundCount);
+				$playLost.css('visibility','visible');
 				return;
 			}else{
 				var istrue = true;
 			}
 		}
 		if(istrue){
-			alert('player wins!');
+			$playWon.css('visibility','visible');
 			playerMoves=[];
-			setTimeout(getRandomColor, 500);
+			setTimeout(function(){
+				$playWon.css('visibility','hidden')},1500);
+			setTimeout(getRandomColor, 2500);
 
 		}
 
