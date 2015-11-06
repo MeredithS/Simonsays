@@ -25,7 +25,7 @@ h3{
 }
 .tile{
 	border: 2px solid black;
-	height: 100px;
+	height: 200px;
 	display:inline-block;
 	width: 20%;
 }
@@ -60,7 +60,6 @@ h3{
 	background-color: green;
 }
 #turn{
-	/*border: 2px solid white*/
 	display:inline-block;
 	width:30%;
 }
