@@ -15,15 +15,6 @@ $(document).ready(function(){
 	var roundCount=0;
 	var playerCount=0;
 
-// var getTurn = function(){
-// 	if(playerCount%2 !== 0){
-// 		$playTurn.css('visibility','hidden');
-// 		$compTurn.css('visibility','visible');
-// 	}else if(playerCount%2 === 0){
-// 		$compTurn.css('visibility','hidden');
-// 		$playTurn.css('visibility','visible');
-// 	}
-// }
 
 	var getRandomColor=function(){
 		$compTurn.css('visibility','visible');
@@ -38,33 +29,51 @@ $(document).ready(function(){
 			}else if(rando===4){
 			randomColors.push('green');
 		}
-		// playerCount+=1;
+		randomColors.forEach(animateCompTile);
 		console.log(playerCount);
 		console.log(randomColors);
 	};
 
 	$playButton.on('click',getRandomColor);
 
+
+
+	var animateCompTile = function(i,name){					//working on getting the items in randomcolors array to pulse!
+		console.log(randomColors);
+		$('#name').addClass('pulse');
+		console.log($('#name'));
+		setTimeout(function(){$('#name').removeClass('pulse')}, 500);
+		console.log($('#name'));
+	}
+
 	var playedRed=function(){
 		playerMoves.push('red');
+		$redTile.addClass('pulse');
+		setTimeout(function(){$redTile.removeClass('pulse')}, 500);
 		console.log(playerMoves);
 	};
 	$redTile.on('click',playedRed);
 
 	var playedBlue=function(){
 		playerMoves.push('blue');
+		$blueTile.addClass('pulse');
+		setTimeout(function(){$blueTile.removeClass('pulse')}, 500);
 		console.log(playerMoves);
 	};
 	$blueTile.on('click',playedBlue);
 
 	var playedYellow=function(){
 		playerMoves.push('yellow');
+		$yellowTile.addClass('pulse');
+		setTimeout(function(){$yellowTile.removeClass('pulse')}, 500);
 		console.log(playerMoves);
 	};
 	$yellowTile.on('click',playedYellow);
 	
 	var playedGreen=function(){
 		playerMoves.push('green');
+		$greenTile.addClass('pulse');
+		setTimeout(function(){$greenTile.removeClass('pulse')}, 500);
 		console.log(playerMoves);
 	};
 	$greenTile.on('click',playedGreen);
