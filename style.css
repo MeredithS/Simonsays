@@ -1,7 +1,7 @@
 body{
 	background-color: black;
 }
-h1{
+#simon{
 	display: inline-block;
 	width:59%;
 	color: white;
@@ -30,9 +30,9 @@ h3{
 	width: 20%;
 }
 #board{
-	width: 60%;
+	width: 50%;
 	display:inline-block;
-	/*padding-right:*/
+	margin-left: 20%;
 }
 #red{
 	border-top-left-radius: 100%;
@@ -63,9 +63,12 @@ h3{
 	display:inline-block;
 	width:30%;
 }
-h4{
+.display{
 	color:white;
 }
 #computerTurn, #playerTurn, #playerWon, #playerLost{
 	visibility: hidden;
+}
+#moves{
+	margin-left: 37%
 }
