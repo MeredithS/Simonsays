@@ -16,7 +16,6 @@ $(document).ready(function(){
 	var $moves = $('#moves');
 	
 
-
 	var getRandomColor=function(){		// this function gets one of 4 colors randomly and pushes them into randomColors array.
 		$round.text("Round: " + roundCount); //this displays the round number the player is on
 		$playLost.css('visibility','hidden'); //this hides the player lost message
@@ -36,9 +35,11 @@ $(document).ready(function(){
 		setTimeout(function(){$playTurn.css('visibility','visible')},randomColors.length*1000); // same idea for this one but "Player's Turn" message is made visible
 		$moves.text('Moves: '+randomColors.length); //this shows how many moves the computer made
 		numMoves = randomColors.length; // this is defining a variable that will be used to show how many moves the player has left to go
+		console.log(randomColors);	
 	};
 
-	$playButton.on('click',getRandomColor); //this event listener starts the game
+	$playButton.on('click', function(){
+	setTimeout(getRandomColor,500)}); //this event listener starts the game
 	
 	var getNumMoves = function(){		//this function shows the player how many moves they have left
 		numMoves = numMoves-1;
@@ -65,6 +66,7 @@ $(document).ready(function(){
 	var playedRed=function(){ 		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('red');
 		$redTile.addClass('pulse');
+		console.log(playerMoves);
 		setTimeout(function(){$redTile.removeClass('pulse')}, 500);
 	};
 	$redTile.on('click',playedRed);
@@ -72,6 +74,7 @@ $(document).ready(function(){
 	var playedBlue=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('blue');
 		$blueTile.addClass('pulse');
+		console.log(playerMoves);
 		setTimeout(function(){$blueTile.removeClass('pulse')}, 500);
 	};
 	$blueTile.on('click',playedBlue);
@@ -79,6 +82,7 @@ $(document).ready(function(){
 	var playedYellow=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('yellow');
 		$yellowTile.addClass('pulse');
+		console.log(playerMoves);
 		setTimeout(function(){$yellowTile.removeClass('pulse')}, 500);
 	};
 	$yellowTile.on('click',playedYellow);
@@ -86,6 +90,7 @@ $(document).ready(function(){
 	var playedGreen=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('green');
 		$greenTile.addClass('pulse');
+		console.log(playerMoves);
 		setTimeout(function(){$greenTile.removeClass('pulse')}, 500);
 	};
 	$greenTile.on('click',playedGreen);
@@ -94,13 +99,23 @@ var compareArrays = function(){ 		// this function is used to compare the player
 	if(event.which===13){
 		$playTurn.css('visibility','hidden');
 		roundCount+=1;
+		console.log(randomColors);
 		for(var i=0; i<randomColors.length; i++){
 			if(randomColors[i]!==playerMoves[i]){
-				randomColors=[];
-				playerMoves=[];
+				// randomColors=[];
+				// playerMoves=[];
 				$round.text("Round: " + roundCount);
-				roundCount=0;
+				// roundCount=0;
 				$playLost.css('visibility','visible');
+				$redTile.off('click',playedRed);
+				$blueTile.off('click',playedBlue);
+				$yellowTile.off('click',playedYellow);
+				$greenTile.off('click',playedGreen);
+				$(document).unbind('keypress');
+				$redTile.off('click', getNumMoves);
+				$blueTile.off('click', getNumMoves);
+				$yellowTile.off('click', getNumMoves);
+				$greenTile.off('click', getNumMoves);
 				return;
 			}else{
 				var istrue = true;
@@ -120,5 +135,15 @@ var compareArrays = function(){ 		// this function is used to compare the player
 
 $(document).keypress(compareArrays); // this event listener signifies the player has played their turn and is submitting their answer for review.  the compareArrays function is triggered by this listener event
 
+var resetGame = function(){		//should the player decide to reset the game in the middle of it they can just click on let's play button and will reset game!
+	randomColors=[];
+	playerMoves=[];
+	roundCount=1;
+	$playLost.css('visibility','hidden');
+	$playTurn.css('visibility','hidden');
+
+};
+
+$playButton.on('click',resetGame);
 
 });
