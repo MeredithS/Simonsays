@@ -1,24 +1,28 @@
 body{
-	background-color: black;
+	background-color: white;
 }
+
 #simon{
 	display: inline-block;
-	width:59%;
-	color: white;
-	margin-left: 150px;
+	width:80%;
+	color: black;
+	text-align: center;
+	font-size: 6em;
+	margin: 0;
 }
 h3{
-	display: inline-block;
-	width: 30%;
-	color: white;
+	text-align: center;
+	color: black;
+	width:80%;
 }
 #play{
 	display: block;
 	height: 50px;
-	border-radius: 10%
+	border-radius: 10%;
+	margin-left: 20%;
 }
 #red, #yellow{
-	margin-left: 20%;
+	margin-left: 35%;
 }
 #blue, #green{
 	margin-right: 20%;
@@ -27,12 +31,12 @@ h3{
 	border: 2px solid black;
 	height: 200px;
 	display:inline-block;
-	width: 20%;
+	width: 15%;
 }
-#board{
-	width: 50%;
+	#board{
+	width:80%;
 	display:inline-block;
-	margin-left: 20%;
+	margin: 0 auto;
 }
 #red{
 	border-top-left-radius: 100%;
@@ -60,15 +64,16 @@ h3{
 	background-color: green;
 }
 #turn{
-	display:inline-block;
-	width:30%;
+	width:80%;
+	text-align: center;
 }
 .display{
-	color:white;
+	color: black;
 }
 #computerTurn, #playerTurn, #playerWon, #playerLost{
-	visibility: hidden;
+	display: none;
 }
 #moves{
-	margin-left: 37%
+	text-align: center;
+	width: 80%;
 }
