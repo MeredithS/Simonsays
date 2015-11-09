@@ -27,6 +27,7 @@ var countDown;
 var startCountDown = function(name,i){
 	$board.hide();
 	setTimeout(function(){
+		document.getElementById('countDownTone').play();
 		$('#' + name).show();
 		setTimeout(function(){
 			$('#'+ name).toggle();
@@ -40,6 +41,15 @@ var startCountDown = function(name,i){
 var animateCompTile = function(name,i){	// this modeled after code I found on snipplr.com, this function will be used to animated the randomColors array.  It ensures there is a delay between each item in the array
 	setTimeout(function(){
 		$('#'+ name).addClass('pulse');
+		if(name === 'red'){
+		document.getElementById(name + 'Tone').play();
+		} else if(name === 'blue'){
+		document.getElementById(name + 'Tone').play();	
+		} else if(name === 'yellow'){
+		document.getElementById(name + 'Tone').play();	
+		} else if(name === 'green'){
+		document.getElementById(name + 'Tone').play();	
+		}
 		setTimeout(function(){
 			$('#'+ name).removeClass('pulse');
 		},500);
@@ -176,7 +186,6 @@ var resetGame = function(){		//should the player decide to reset the game in the
 	$blueTile.off('click',playedBlue);
 	$yellowTile.off('click',playedYellow);
 	$greenTile.off('click',playedGreen);
-	// $(document).unbind('keypress');
 	$redTile.off('click', getNumMoves);
 	$blueTile.off('click', getNumMoves);
 	$yellowTile.off('click', getNumMoves);
@@ -191,7 +200,6 @@ var resetGame = function(){		//should the player decide to reset the game in the
 	$blueTile.on('click',playedBlue);
 	$yellowTile.on('click',playedYellow);
 	$greenTile.on('click',playedGreen);
-	// $(document).keypress(compareArrays);  // this event listener signifies the player has played their turn and is submitting their answer for review.  the compareArrays function is triggered by this listener event
 	$redTile.on('click', getNumMoves);
 	$blueTile.on('click', getNumMoves);
 	$yellowTile.on('click', getNumMoves);
