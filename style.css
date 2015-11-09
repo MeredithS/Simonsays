@@ -1,18 +1,18 @@
 body{
-	background-color: white;
+	background-color: black;
 }
 
 #simon{
 	display: inline-block;
 	width:80%;
-	color: black;
+	color: white;
 	text-align: center;
 	font-size: 6em;
 	margin: 0;
 }
 h3{
 	text-align: center;
-	color: black;
+	color: white;
 	width:80%;
 }
 #play{
@@ -68,7 +68,7 @@ h3{
 	text-align: center;
 }
 .display{
-	color: black;
+	color: white;
 }
 #computerTurn, #playerTurn, #playerWon, #playerLost{
 	display: none;

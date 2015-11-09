@@ -90,7 +90,6 @@ $(document).ready(function(){
 			$redTile.removeClass('pulse');
 		}, 500);
 	};
-	$redTile.on('click',playedRed);
 
 	var playedBlue=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('blue');
@@ -100,7 +99,7 @@ $(document).ready(function(){
 			$blueTile.removeClass('pulse');
 		}, 500);
 	};
-	$blueTile.on('click',playedBlue);
+	
 
 	var playedYellow=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('yellow');
@@ -110,7 +109,7 @@ $(document).ready(function(){
 			$yellowTile.removeClass('pulse');
 		}, 500);
 	};
-	$yellowTile.on('click',playedYellow);
+	
 	
 	var playedGreen=function(){		//this records the palyer's choices into an array and adds animation on the div on which they selected
 		playerMoves.push('green');
@@ -120,8 +119,7 @@ $(document).ready(function(){
 			$greenTile.removeClass('pulse');
 		}, 500);
 	};
-	$greenTile.on('click',playedGreen);
-
+	
 var compareArrays = function(){ 		// this function is used to compare the player's choices with the computers and will notify the player if they have won or lost
 	if(event.which===13){
 		$playTurn.hide();
@@ -136,10 +134,10 @@ var compareArrays = function(){ 		// this function is used to compare the player
 				$yellowTile.off('click',playedYellow);
 				$greenTile.off('click',playedGreen);
 				$(document).unbind('keypress');
-				$redTile.off('click', getNumMoves);
-				$blueTile.off('click', getNumMoves);
-				$yellowTile.off('click', getNumMoves);
-				$greenTile.off('click', getNumMoves);
+				// $redTile.off('click', getNumMoves);
+				// $blueTile.off('click', getNumMoves);
+				// $yellowTile.off('click', getNumMoves);
+				// $greenTile.off('click', getNumMoves);
 				return;
 			}else{
 				beTrue = true;
@@ -158,7 +156,7 @@ var compareArrays = function(){ 		// this function is used to compare the player
 	}
 };
 
-$(document).keypress(compareArrays); // this event listener signifies the player has played their turn and is submitting their answer for review.  the compareArrays function is triggered by this listener event
+// $(document).keypress(compareArrays); // this event listener signifies the player has played their turn and is submitting their answer for review.  the compareArrays function is triggered by this listener event
 
 var resetGame = function(){		//should the player decide to reset the game in the middle of it they can just click on let's play button and will reset game!
 	randomColors=[];
@@ -166,6 +164,15 @@ var resetGame = function(){		//should the player decide to reset the game in the
 	roundCount=1;
 	$playLost.hide();
 	$playTurn.hide();
+	$redTile.on('click',playedRed);
+	$blueTile.on('click',playedBlue);
+	$yellowTile.on('click',playedYellow);
+	$greenTile.on('click',playedGreen);
+	$(document).keypress(compareArrays);
+	// $redTile.on('click', getNumMoves);
+	// $blueTile.on('click', getNumMoves);
+	// $yellowTile.on('click', getNumMoves);
+	// $greenTile.on('click', getNumMoves);
 
 };
 
